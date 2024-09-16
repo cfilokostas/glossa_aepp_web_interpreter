@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpreter ΑΕΠΠ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="code-output-container">
+            <!-- Περιοχή Κώδικα -->
+            <div class="editor-section">
+                <div class="tabs">
+                    <span class="tab active">Αλγόριθμος</span>
+                    <span class="tab">Αρχείο εισόδου</span>
+                </div>
+                <div class="code-area">
+                    <div class="line-numbers" id="lineNumbers">1</div>
+                    <textarea id="code" oninput="updateLineNumbers()" onscroll="syncScroll()"
+                        onkeydown="updateLineNumbers()" placeholder="Γράψε τον κώδικα ΑΕΠΠ εδώ..."></textarea>
+                </div>
+            </div>
+            <!-- Περιοχή Οθόνης Εκτέλεσης -->
+            <div class="output-section">
+                <div class="tabs">
+                    <span class="tab active">Οθόνη εκτέλεσης</span>
+                </div>
+                <textarea id="output" placeholder="Η έξοδος θα εμφανιστεί εδώ..." readonly></textarea>
+            </div>
+        </div>
+
+        <!-- Περιοχή Εντολών -->
+        <div class="commands-section">
+            <div class="tabs">
+                <span class="tab active">Εντολές</span>
+                <span class="tab">Μεταβλητές</span>
+                <span class="tab">Εκφράσεις</span>
+            </div>
+            <div class="commands">
+                <ul>
+                    <li>Αλγόριθμος //</li>
+                    <li>Δεδομένα //</li>
+                    <li>Εμφάνισε</li>
+                    <li>Εκτύπωσε</li>
+                    <li>Διάβασε</li>
+                    <li>Αν τότε</li>
+                    <li>Αλλιώς</li>
+                    <li>Τέλος_αν</li>
+                    <li>Όσο επαναλαμβάνε</li>
+                    <li>Αρχή_επανάληψης</li>
+                    <li>Μέχρις_ότου</li>
+                    <li>...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

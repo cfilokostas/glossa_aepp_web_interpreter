@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.main-container {
+    display: flex;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.code-output-container {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.editor-section,
+.output-section,
+.commands-section {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.output-section {
+    flex: 0 0 250px;
+    /* Σταθερό ύψος για την περιοχή εξόδου ώστε να είναι πάντα ορατή */
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    /* Μικρό κενό ανάμεσα στον editor και την "Οθόνη εκτέλεσης" */
+}
+
+textarea {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    resize: none;
+    font-family: monospace;
+    font-size: 1em;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.tabs {
+    background-color: #eee;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.tab.active {
+    font-weight: bold;
+    color: #333;
+}
+
+.commands-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.commands {
+    padding: 10px;
+}
+
+.commands ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.commands li {
+    padding: 5px 0;
+    font-family: monospace;
+}
+
+.code-area {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex: 1;
+}
+
+.line-numbers {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: right;
+    user-select: none;
+    border-right: 1px solid #ccc;
+    font-family: monospace;
+    color: #888;
+    width: 40px;
+    height: 100%;
+    overflow: hidden;
+}
+
+#code {
+    padding-left: 50px;
+    font-family: monospace;
+    font-size: 1em;
+    border: none;
+    flex: 1;
+    resize: none;
+    height: 100%;
+}
+
+#code:focus {
+    outline: none;
+}
