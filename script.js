@@ -82,12 +82,54 @@ function updateCommands() {
         commands = programCommands;
     }
 
-    // Προσθήκη των νέων εντολών στη λίστα
+    // Προσθήκη των εντολών στη λίστα ως πλήρη γραμμή
     commands.forEach(command => {
         const li = document.createElement('li');
-        li.textContent = command;
+        
+        // Διαχωρισμός της εντολής σε λέξεις
+        const words = command.split(' ');
+
+        // Για κάθε λέξη δημιουργείται ένα span που είναι clickable
+        words.forEach((word, index) => {
+            const span = document.createElement('span');
+            span.textContent = word;
+
+            // Προσθήκη event listener για το κάθε span
+            span.onclick = () => insertAtCursor(word);
+
+            // Προαιρετικό styling για να φαίνεται clickable
+            span.style.cursor = 'pointer';
+            span.style.color = 'blue'; // Κάνει το κείμενο να ξεχωρίζει ως clickable
+            span.style.marginRight = '5px'; // Για διαχωρισμό των λέξεων
+
+            // Προσθήκη του span στο <li>
+            li.appendChild(span);
+        });
+
+        // Προσθήκη του <li> στη λίστα εντολών
         commandsList.appendChild(li);
     });
+}
+
+// Λειτουργία εισαγωγής της εντολής στο σημείο του κέρσορα
+function insertAtCursor(word) {
+    const textarea = document.getElementById('code');
+    const startPos = textarea.selectionStart;
+    const endPos = textarea.selectionEnd;
+    const textBefore = textarea.value.substring(0, startPos);
+    const textAfter = textarea.value.substring(endPos, textarea.value.length);
+
+    // Εισαγωγή της λέξης στο σημείο του κέρσορα
+    textarea.value = textBefore + word + textAfter;
+
+    // Μετακίνηση του κέρσορα αμέσως μετά την εισαγόμενη λέξη
+    textarea.selectionStart = textarea.selectionEnd = startPos + word.length;
+
+    // Focus στο textarea για συνεχιζόμενη γραφή
+    textarea.focus();
+
+    // Ενημέρωση αριθμών γραμμών
+    updateLineNumbers();
 }
 
 // Ενημέρωση αριθμών γραμμών στο textarea
