@@ -1,117 +1,66 @@
-// Εντολές για Πρόγραμμα
+// Program Commands
 const programCommands = [
-    "ΠΡΟΓΡΑΜΜΑ",
-    "ΣΤΑΘΕΡΕΣ",
-    "ΜΕΤΑΒΛΗΤΕΣ",
-    "ΑΚΕΡΑΙΕΣ:",
-    "ΠΡΑΓΜΑΤΙΚΕΣ:",
-    "ΧΑΡΑΚΤΗΡΕΣ:",
-    "ΛΟΓΙΚΕΣ:",
-    "ΑΡΧΗ",
-    "ΓΡΑΨΕ",
-    "ΔΙΑΒΑΣΕ",
-    "ΑΝ ΤΟΤΕ",
-    "ΑΛΛΙΩΣ_ΑΝ ΤΟΤΕ",
-    "ΑΛΛΙΩΣ",
-    "ΤΕΛΟΣ_ΑΝ",
-    "ΓΙΑ ΑΠΟ ΜΕΧΡΙ ΜΕ_ΒΗΜΑ",
-    "ΤΕΛΟΣ_ΕΠΑΝΑΛΗΨΗΣ",
-    "ΟΣΟ ΕΠΑΝΑΛΑΒΕ",
-    "ΤΕΛΟΣ_ΕΠΑΝΑΛΗΨΗΣ",
-    "ΜΕΧΡΙΣ_ΟΤΟΥ",
-    "ΚΑΛΕΣΕ",
-    "ΤΕΛΟΣ_ΠΡΟΓΡΑΜΜΑΤΟΣ",
-    "ΔΙΑΔΙΚΑΣΙΑ",
-    "ΤΕΛΟΣ_ΔΙΑΔΙΚΑΣΙΑΣ",
-    "ΣΥΝΑΡΤΗΣΗ:ΑΚΕΡΑΙΑ",
-    ":ΠΡΑΓΜΑΤΙΚΗ",
-    ":ΧΑΡΑΚΤΗΡΑΣ",
-    ":ΛΟΓΙΚΗ",
-    "ΤΕΛΟΣ_ΣΥΝΑΡΤΗΣΗΣ",
-    "Α_ΜΟ Α_ΤΟ ΕΟ ΕΦΟ",
-    "ΗΜΟ ΛΟΓ ΤΟ ΣΥΝΟ Τ_ΡΟ",
-    "ΑΛΗΘΗΣ ΨΕΥΔΗΣ",
-    "= < > <= >=",
-    "- + / * ^ div mod",
+    "ΠΡΟΓΡΑΜΜΑ", "ΣΤΑΘΕΡΕΣ", "ΜΕΤΑΒΛΗΤΕΣ", "ΑΚΕΡΑΙΕΣ:", "ΠΡΑΓΜΑΤΙΚΕΣ:", 
+    "ΧΑΡΑΚΤΗΡΕΣ:", "ΛΟΓΙΚΕΣ:", "ΑΡΧΗ", "ΓΡΑΨΕ", "ΔΙΑΒΑΣΕ", "ΑΝ ΤΟΤΕ", 
+    "ΑΛΛΙΩΣ_ΑΝ ΤΟΤΕ", "ΑΛΛΙΩΣ", "ΤΕΛΟΣ_ΑΝ", "ΓΙΑ ΑΠΟ ΜΕΧΡΙ ΜΕ_ΒΗΜΑ",
+    "ΤΕΛΟΣ_ΕΠΑΝΑΛΗΨΗΣ", "ΟΣΟ ΕΠΑΝΑΛΑΒΕ", "ΜΕΧΡΙΣ_ΟΤΟΥ", "ΚΑΛΕΣΕ", 
+    "ΤΕΛΟΣ_ΠΡΟΓΡΑΜΜΑΤΟΣ", "ΔΙΑΔΙΚΑΣΙΑ", "ΤΕΛΟΣ_ΔΙΑΔΙΚΑΣΙΑΣ", "ΣΥΝΑΡΤΗΣΗ:ΑΚΕΡΑΙΑ", 
+    ":ΠΡΑΓΜΑΤΙΚΗ", ":ΧΑΡΑΚΤΗΡΑΣ", ":ΛΟΓΙΚΗ", "ΤΕΛΟΣ_ΣΥΝΑΡΤΗΣΗΣ", "Α_ΜΟ Α_ΤΟ ΕΟ ΕΦΟ",
+    "ΗΜΟ ΛΟΓ ΤΟ ΣΥΝΟ Τ_ΡΟ", "ΑΛΗΘΗΣ ΨΕΥΔΗΣ", "= < > <= >=", "- + / * ^ div mod",
     "Η ΚΑΙ ΟΧΙ <-"
 ];
 
-// Εντολές για Αλγόριθμο
+// Algorithm Commands
 const algorithmCommands = [
-    "Αλγόριθμος",
-    "Δεδομένα // //",
-    "Εμφάνισε",
-    "Εκτύπωσε",
-    "Διάβασε",
-    "Αντιμετάθεσε",
-    "Αν τότε",
-    "αλλιώς_αν τότε",
-    "αλλιώς",
-    "Τέλος_αν",
-    "Για από μέχρι με_βήμα",
-    "Τέλος_επανάληψης",
-    "Όσο επαναλάβε",
-    "Τέλος_επανάληψης",
-    "Αρχή_επανάληψης",
-    "Μέχρις_ότου",
-    "Αποτελέσματα // //",
-    "Τέλος",
-    "Α_Μ() Α_Τ() Ε() ΕΦ()",
-    "ΗΜ() ΛΟΓ() ΣΥΝ() Τ_Ρ()",
-    "Αληθής Ψευδής",
-    "= <> < > <= >=",
-    "- + / * ^ div mod",
-    "ή και όχι <-"
+    "Αλγόριθμος", "Δεδομένα // //", "Εμφάνισε", "Εκτύπωσε", "Διάβασε", 
+    "Αντιμετάθεσε", "Αν τότε", "αλλιώς_αν τότε", "αλλιώς", "Τέλος_αν", 
+    "Για από μέχρι με_βήμα", "Τέλος_επανάληψης", "Όσο επαναλάβε", 
+    "Τέλος_επανάληψης", "Αρχή_επανάληψης", "Μέχρις_ότου", "Αποτελέσματα // //", 
+    "Τέλος", "Α_Μ() Α_Τ() Ε() ΕΦ()", "ΗΜ() ΛΟΓ() ΣΥΝ() Τ_Ρ()", "Αληθής Ψευδής",
+    "= <> < > <= >=", "- + / * ^ div mod", "ή και όχι <-"
 ];
 
-// Αλλάζει τις εντολές ανάλογα με την επιλογή Αλγόριθμου ή Προγράμματος
+// Update commands based on selection
 function updateCommands() {
-    const TypeSelect = document.getElementById('typeSelect').value;
+    const typeSelect = document.getElementById('typeSelect').value;
     const commandsList = document.getElementById('commandsList');
 
-    // Καθαρισμός τρεχουσών εντολών
+    // Clear current commands
     commandsList.innerHTML = '';
 
-    let commands = [];
+    // Select correct command set
+    const commands = (typeSelect === 'program') ? programCommands : algorithmCommands;
 
-    if (TypeSelect === 'algorithm') {
-        // Επιλογές για Αλγόριθμο
-        commands = algorithmCommands;
-    } else if (TypeSelect === 'program') {
-        // Επιλογές για Πρόγραμμα
-        commands = programCommands;
-    }
-
-    // Προσθήκη των εντολών στη λίστα ως πλήρη γραμμή
+    // Add commands to the list
     commands.forEach(command => {
         const li = document.createElement('li');
         
-        // Διαχωρισμός της εντολής σε λέξεις
+        // Split command into words
         const words = command.split(' ');
 
-        // Για κάθε λέξη δημιουργείται ένα span που είναι clickable
-        words.forEach((word, index) => {
+        // Create span for each word
+        words.forEach(word => {
             const span = document.createElement('span');
             span.textContent = word;
 
-            // Προσθήκη event listener για το κάθε span
+            // Add click listener to insert word at cursor
             span.onclick = () => insertAtCursor(word);
 
-            // Προαιρετικό styling για να φαίνεται clickable
+            // Optional styling for clickable word
             span.style.cursor = 'pointer';
-            span.style.color = 'blue'; // Κάνει το κείμενο να ξεχωρίζει ως clickable
-            span.style.marginRight = '5px'; // Για διαχωρισμό των λέξεων
+            span.style.color = 'blue';
+            span.style.marginRight = '5px';
 
-            // Προσθήκη του span στο <li>
+            // Append span to list item
             li.appendChild(span);
         });
 
-        // Προσθήκη του <li> στη λίστα εντολών
+        // Append list item to commands list
         commandsList.appendChild(li);
     });
 }
 
-// Λειτουργία εισαγωγής της εντολής στο σημείο του κέρσορα
+// Insert command at the cursor position in the textarea
 function insertAtCursor(word) {
     const textarea = document.getElementById('code');
     const startPos = textarea.selectionStart;
@@ -119,31 +68,58 @@ function insertAtCursor(word) {
     const textBefore = textarea.value.substring(0, startPos);
     const textAfter = textarea.value.substring(endPos, textarea.value.length);
 
-    // Εισαγωγή της λέξης στο σημείο του κέρσορα
+    // Insert the word at cursor position
     textarea.value = textBefore + word + textAfter;
 
-    // Μετακίνηση του κέρσορα αμέσως μετά την εισαγόμενη λέξη
+    // Move the cursor after the inserted word
     textarea.selectionStart = textarea.selectionEnd = startPos + word.length;
 
-    // Focus στο textarea για συνεχιζόμενη γραφή
+    // Focus back on the textarea
     textarea.focus();
 
-    // Ενημέρωση αριθμών γραμμών
+    // Sync highlighting and line numbers
+    syncHighlight();
     updateLineNumbers();
 }
 
-// Ενημέρωση αριθμών γραμμών στο textarea
-function updateLineNumbers() {
-    const code = document.getElementById('code');
-    const lineNumbers = document.getElementById('lineNumbers');
-    
-    const lines = code.value.split('\n').length;
-    lineNumbers.innerHTML = '';
-    
-    for (let i = 1; i <= lines; i++) {
-        lineNumbers.innerHTML += i + '<br>';
-    }
+// Highlight the current line where the cursor is
+function highlightLine() {
+    const textarea = document.getElementById('code');
+    const highlight = document.getElementById('highlight');
+    const lines = textarea.value.split('\n');
+
+    const cursorPosition = textarea.selectionStart;
+    const textBeforeCursor = textarea.value.substring(0, cursorPosition);
+    const currentLine = textBeforeCursor.split('\n').length - 1;
+
+    highlight.innerHTML = '';
+    const lineDiv = document.createElement('div');
+    lineDiv.classList.add('current-line');
+    lineDiv.style.top = `${currentLine * 1.2}em`;
+    highlight.appendChild(lineDiv);
 }
 
-// Εντολή εκκίνησης για να φορτώσει αρχικές εντολές
+// Sync scrolling between textarea and highlight
+function syncScroll() {
+    const textarea = document.getElementById('code');
+    const highlight = document.getElementById('highlight');
+    highlight.scrollTop = textarea.scrollTop;
+}
+
+// Update line numbers in the textarea
+function updateLineNumbers() {
+    const textarea = document.getElementById('code');
+    const lineNumbers = document.getElementById('lineNumbers');
+    const lineCount = textarea.value.split('\n').length;
+
+    lineNumbers.innerHTML = Array(lineCount).fill(0).map((_, i) => i + 1).join('<br>');
+}
+
+// Synchronize textarea content with the highlight div
+function syncHighlight() {
+    updateLineNumbers();
+    // You could add additional synchronization here if needed
+}
+
+// Initialize commands on page load
 window.onload = updateCommands;

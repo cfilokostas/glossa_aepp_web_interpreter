@@ -1,125 +1,167 @@
+/* Basic body styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Light background color */
 }
 
+/* Main container for layout, taking full height of viewport */
 .main-container {
     display: flex;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     padding: 10px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Ensures padding is included in element's width and height */
 }
 
+/* Container for the code editor and output areas */
 .code-output-container {
-    flex: 3;
+    flex: 3; /* Takes 3 parts of the flex space */
     display: flex;
     flex-direction: column;
-    margin-right: 10px;
+    margin-right: 10px; /* Space between editor and the next section */
 }
 
+/* Common styles for editor, output, and commands sections */
 .editor-section, .output-section, .commands-section {
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-bottom: 10px;
+    background-color: #fff; /* White background for readability */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 10px; /* Space between sections */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack content vertically */
 }
 
+/* Editor section styling */
 .editor-section {
-    flex: 1;
+    flex: 1; /* Occupies most of the space */
     display: flex;
     flex-direction: column;
 }
 
+/* Output section styling with fixed height */
 .output-section {
-    flex: 0 0 150px;
+    flex: 0 0 150px; /* Fixed height for the output section */
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    margin-top: 10px; /* Space above output section */
 }
 
-textarea {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    resize: none;
-    font-family: monospace;
-    font-size: 1em;
-}
-
+/* Remove outline when textarea is focused */
 textarea:focus {
-    outline: none;
+    outline: none; /* Prevents default blue outline on focus */
 }
 
+/* Tabs container at the top of the editor */
 .tabs {
-    background-color: #eee;
+    background-color: #eee; /* Light gray background */
     padding: 10px;
     display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
+    justify-content: space-between; /* Space out elements in the tab */
+    border-bottom: 1px solid #ccc; /* Border separating tabs from content */
 }
 
+/* Dropdown for selecting type (program or algorithm) */
 #typeSelect {
-    font-size: 1em;
+    font-size: 1em; /* Standard font size */
 }
 
+/* Commands section styling */
 .commands-section {
-    flex: 1;
+    flex: 1; /* Takes available space */
     display: flex;
     flex-direction: column;
     padding: 10px;
-    overflow-y: auto;
+    overflow-y: auto; /* Scroll vertically if content exceeds height */
 }
 
+/* Commands area padding */
 .commands {
     padding: 10px;
 }
 
+/* Styling for the list of commands */
 .commands ul {
-    list-style-type: none;
-    padding-left: 0;
+    list-style-type: none; /* Remove bullets from list */
+    padding-left: 0; /* Remove default padding */
 }
 
+/* Individual command list items */
 .commands li {
-    padding: 5px 0;
-    font-family: monospace;
+    padding: 5px 0; /* Space between list items */
+    font-family: monospace; /* Monospace font for code-like appearance */
 }
 
+/* Code area containing both line numbers and textarea */
 .code-area {
     display: flex;
-    position: relative;
+    position: relative; /* For absolute positioning of elements inside */
     width: 100%;
-    flex: 1;
+    flex: 1; /* Occupies remaining space */
 }
 
+/* Styling for line numbers on the left */
 .line-numbers {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Same as body background */
     padding: 10px;
-    text-align: right;
-    user-select: none;
-    border-right: 1px solid #ccc;
-    font-family: monospace;
-    color: #888;
-    width: 40px;
-    height: 100%;
-    overflow: hidden;
+    text-align: right; /* Align numbers to the right */
+    user-select: none; /* Prevent selection of line numbers */
+    border-right: 1px solid #ccc; /* Border separating line numbers from code */
+    font-family: monospace; /* Monospace font for numbers */
+    color: #888; /* Light gray color for numbers */
+    width: 40px; /* Fixed width for line numbers */
+    height: 100%; /* Full height */
+    overflow: hidden; /* Prevent overflow */
 }
 
+/* Styling for the code editing area (textarea) */
+textarea {
+    flex: 1; /* Takes remaining space in the code area */
+    padding: 10px;
+    border: none; /* No border */
+    resize: none; /* Disable resize */
+    font-family: monospace; /* Monospace font for code */
+    font-size: 1em; /* Standard font size */
+}
+
+/* Highlight container (behind textarea) for highlighting code */
+#highlight {
+    flex: 1;
+    position: absolute;
+    left: 60px; /* Align with textarea padding */
+    top: 10.4px; /* Small offset for alignment */
+    width: calc(100% - 15px); /* Make highlight fit inside the textarea */
+    height: 100%;
+    pointer-events: none; /* Allow interaction with textarea */
+    font-family: monospace;
+    font-size: 12.5px; /* Match textarea font size */
+    background: transparent; /* Transparent background to show through */
+    z-index: 1; /* Keep behind textarea */
+}
+
+/* Textarea for code input, on top of the highlight */
 #code {
+    position: relative;
+    background-color: transparent; /* Transparent so that highlights are visible */
+    z-index: 2; /* Keep above the highlight div */
     padding-left: 5px;
     font-family: monospace;
     font-size: 1em;
-    border: none;
+    border: none; /* No border */
     flex: 1;
-    resize: none;
-    height: 100%;
+    resize: none; /* Disable resizing */
+    height: 100%; /* Full height */
+    color: black; /* Default text color */
 }
 
-#code:focus {
-    outline: none;
+/* Styling for highlighting the current line */
+.current-line {
+    position: absolute;
+    background-color: rgba(255, 255, 0, 0.2); /* Light yellow background for highlight */
+    width: calc(100% - 45px); /* Full width minus padding */
+    height: 1.2em; /* Matches line height */
+    z-index: 0; /* Keep below the text */
+    border-top: 1px solid rgb(46, 45, 45); /* Red border for top */
+    border-bottom: 1px solid red; /* Red border for bottom */
+    pointer-events: none; /* Make it non-interactive */
 }
-
-

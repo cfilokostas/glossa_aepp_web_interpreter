@@ -21,7 +21,8 @@
             <div class="editor-section">
                 <div class="code-area">
                     <div class="line-numbers" id="lineNumbers"></div>
-                    <textarea id="code" spellcheck="false" oninput="updateLineNumbers()"></textarea>
+                    <div id="highlight"></div>
+                    <textarea id="code" spellcheck="false" oninput="syncHighlight(); updateLineNumbers()" onscroll="syncScroll()" onclick="highlightLine(event)" onkeydown="highlightLine(event)" onkeyup="highlightLine(event)"></textarea>
                 </div>
             </div>
 
