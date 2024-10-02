@@ -20,6 +20,25 @@ const algorithmCommands = [
     "= <> < > <= >=", "- + / * ^ div mod", "ή και όχι <-"
 ];
 
+// Correction mappings for both types
+const programCorrections = {
+
+    //Εκτύπωσε
+    "εκτυπωσε": "Εκτύπωσε",
+    "εκτύπωσε": "Εκτύπωσε",
+    "Εκτυπωσε": "Εκτύπωσε",
+    // Add more corrections specific to "Πρόγραμμα" here
+};
+
+const algorithmCorrections = {
+    //Αλγόριθμος
+    "αλγοριθμος": "Αλγόριθμος",
+    "εκτύπωσε": "Εκτύπωσε",
+    "εκτυπωσε": "Εκτύπωσε",
+    "Εκτυπωσε": "Εκτύπωσε",
+    // Add more corrections specific to "Αλγόριθμος" here
+};
+
 // Update commands based on selection
 function updateCommands() {
     const typeSelect = document.getElementById('typeSelect').value;
@@ -121,5 +140,41 @@ function syncHighlight() {
     // You could add additional synchronization here if needed
 }
 
+// Auto-correct feature
+function autoCorrect() {
+    const textarea = document.getElementById('code');
+    const cursorPosition = textarea.selectionStart; // Get current cursor position
+    const textBeforeCursor = textarea.value.substring(0, cursorPosition);
+    
+    // Check which line the cursor is on
+    const lines = textBeforeCursor.split('\n');
+    const currentLine = lines[lines.length - 1]; // Get the current line
+    const lastWordStart = currentLine.lastIndexOf(' ') + 1; // Get the start of the last word
+    const lastWord = currentLine.substring(lastWordStart).toLowerCase(); // Convert to lowercase for matching
+
+    // Determine the corrections to use based on the selected type
+    const typeSelect = document.getElementById('typeSelect').value;
+    const corrections = (typeSelect === 'program') ? programCorrections : algorithmCorrections;
+
+    // Check for corrections
+    const correctWord = corrections[lastWord];
+    if (correctWord) {
+        // Replace last word with the correct version
+        const correctedText = textarea.value.substring(0, cursorPosition - currentLine.length + lastWordStart) + 
+                              correctWord + 
+                              textarea.value.substring(cursorPosition);
+        textarea.value = correctedText;
+
+        // Restore cursor position
+        textarea.selectionStart = textarea.selectionEnd = cursorPosition - currentLine.length + lastWordStart + correctWord.length; // Move cursor to the end of the corrected word
+    }
+}
+
+// Listen for input changes
+document.getElementById('code').addEventListener('input', () => {
+    autoCorrect();
+});
+
 // Initialize commands on page load
 window.onload = updateCommands;
+
