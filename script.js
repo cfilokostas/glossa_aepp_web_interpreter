@@ -1,10 +1,10 @@
 // Program Commands
 const programCommands = [
-    "ΠΡΟΓΡΑΜΜΑ", "ΣΤΑΘΕΡΕΣ", "ΜΕΤΑΒΛΗΤΕΣ", "ΑΚΕΡΑΙΕΣ:", "ΠΡΑΓΜΑΤΙΚΕΣ:", 
-    "ΧΑΡΑΚΤΗΡΕΣ:", "ΛΟΓΙΚΕΣ:", "ΑΡΧΗ", "ΓΡΑΨΕ", "ΔΙΑΒΑΣΕ", "ΑΝ ΤΟΤΕ", 
+    "ΠΡΟΓΡΑΜΜΑ", "ΣΤΑΘΕΡΕΣ", "ΜΕΤΑΒΛΗΤΕΣ", "ΑΚΕΡΑΙΕΣ:", "ΠΡΑΓΜΑΤΙΚΕΣ:",
+    "ΧΑΡΑΚΤΗΡΕΣ:", "ΛΟΓΙΚΕΣ:", "ΑΡΧΗ", "ΓΡΑΨΕ", "ΔΙΑΒΑΣΕ", "ΑΝ ΤΟΤΕ",
     "ΑΛΛΙΩΣ_ΑΝ ΤΟΤΕ", "ΑΛΛΙΩΣ", "ΤΕΛΟΣ_ΑΝ", "ΓΙΑ ΑΠΟ ΜΕΧΡΙ ΜΕ_ΒΗΜΑ",
-    "ΤΕΛΟΣ_ΕΠΑΝΑΛΗΨΗΣ", "ΟΣΟ ΕΠΑΝΑΛΑΒΕ", "ΜΕΧΡΙΣ_ΟΤΟΥ", "ΚΑΛΕΣΕ", 
-    "ΤΕΛΟΣ_ΠΡΟΓΡΑΜΜΑΤΟΣ", "ΔΙΑΔΙΚΑΣΙΑ", "ΤΕΛΟΣ_ΔΙΑΔΙΚΑΣΙΑΣ", "ΣΥΝΑΡΤΗΣΗ:ΑΚΕΡΑΙΑ", 
+    "ΤΕΛΟΣ_ΕΠΑΝΑΛΗΨΗΣ", "ΟΣΟ ΕΠΑΝΑΛΑΒΕ", "ΜΕΧΡΙΣ_ΟΤΟΥ", "ΚΑΛΕΣΕ",
+    "ΤΕΛΟΣ_ΠΡΟΓΡΑΜΜΑΤΟΣ", "ΔΙΑΔΙΚΑΣΙΑ", "ΤΕΛΟΣ_ΔΙΑΔΙΚΑΣΙΑΣ", "ΣΥΝΑΡΤΗΣΗ:ΑΚΕΡΑΙΑ",
     ":ΠΡΑΓΜΑΤΙΚΗ", ":ΧΑΡΑΚΤΗΡΑΣ", ":ΛΟΓΙΚΗ", "ΤΕΛΟΣ_ΣΥΝΑΡΤΗΣΗΣ", "Α_ΜΟ Α_ΤΟ ΕΟ ΕΦΟ",
     "ΗΜΟ ΛΟΓ ΤΟ ΣΥΝΟ Τ_ΡΟ", "ΑΛΗΘΗΣ ΨΕΥΔΗΣ", "= < > <= >=", "- + / * ^ div mod",
     "Η ΚΑΙ ΟΧΙ <-"
@@ -12,32 +12,70 @@ const programCommands = [
 
 // Algorithm Commands
 const algorithmCommands = [
-    "Αλγόριθμος", "Δεδομένα // //", "Εμφάνισε", "Εκτύπωσε", "Διάβασε", 
-    "Αντιμετάθεσε", "Αν τότε", "αλλιώς_αν τότε", "αλλιώς", "Τέλος_αν", 
-    "Για από μέχρι με_βήμα", "Τέλος_επανάληψης", "Όσο επαναλάβε", 
-    "Τέλος_επανάληψης", "Αρχή_επανάληψης", "Μέχρις_ότου", "Αποτελέσματα // //", 
+    "Αλγόριθμος", "Δεδομένα // //", "Εμφάνισε", "Εκτύπωσε", "Διάβασε",
+    "Αντιμετάθεσε", "Αν τότε", "αλλιώς_αν τότε", "αλλιώς", "Τέλος_αν",
+    "Για από μέχρι με_βήμα", "Τέλος_επανάληψης", "Όσο επαναλάβε",
+    "Τέλος_επανάληψης", "Αρχή_επανάληψης", "Μέχρις_ότου", "Αποτελέσματα // //",
     "Τέλος", "Α_Μ() Α_Τ() Ε() ΕΦ()", "ΗΜ() ΛΟΓ() ΣΥΝ() Τ_Ρ()", "Αληθής Ψευδής",
     "= <> < > <= >=", "- + / * ^ div mod", "ή και όχι <-"
 ];
 
+//Auto correct mapping 
 // Correction mappings for both types
-const programCorrections = {
 
-    //Εκτύπωσε
-    "εκτυπωσε": "Εκτύπωσε",
-    "εκτύπωσε": "Εκτύπωσε",
-    "Εκτυπωσε": "Εκτύπωσε",
-    // Add more corrections specific to "Πρόγραμμα" here
-};
 
-const algorithmCorrections = {
-    //Αλγόριθμος
-    "αλγοριθμος": "Αλγόριθμος",
-    "εκτύπωσε": "Εκτύπωσε",
-    "εκτυπωσε": "Εκτύπωσε",
-    "Εκτυπωσε": "Εκτύπωσε",
-    // Add more corrections specific to "Αλγόριθμος" here
-};
+const algorithmCorrections = {};
+const programCorrections = {};
+
+// Define an array of words with their variations
+const AlgCorrections = [
+    //{ variations: ["εκτύπωσε", "εκτυπωσε", "Εκτυπωσε"], correct: "Εκτύπωσε" },
+    { variations: ["αλγοριθμος", "αλγόριθμος", "Αλγοριθμος", "ΑΛΓΟΡΙΘΜΟς", "algoriumow", "alg;oriumow", "Algoriumow", "Alg;oriumow", "ALGORITHMOW", "algorithmos", "ALGORITHMOS", "αλγοριθμοσ", "αλγόριθμοσ", "Αλγοριθμοσ", "Αλγόριθμοσ", "ΑΛΓΟΡΙΘΜΟΣ", "algoriumos", "alg;oriumos", "Algoriumos", "Alg;oriumos"], correct: "Αλγόριθμος" },
+    { variations: ["δεδομενα", "δεδομένα", "Δεδομενα", "ΔΕΔΟΜΕΝΑ", "dedomena", "dedom;ena", "Dedomena", "Dedom;ena", "DEDOMENA"], correct: "Δεδομένα" },
+    { variations: ["εμφανισε", "εμφάνισε", "Εμφανισε", "ΕΜΦΑΝΙΣΕ", "emfanise", "emf;anise", "Emfanise", "Emf;anise", "EMFANISE"], correct: "Εμφάνισε" },
+    { variations: ["εκτυπωσε", "εκτύπωσε", "Εκτυπωσε", "ΕΚΤΥΠΩΣΕ", "ektypvse", "ekt;ypvse", "Ektypvse", "Ekt;ypvse", "EKTYPVSE", "ektypwse", "EKTYPWSE"], correct: "Εκτύπωσε" },
+    { variations: ["διαβασε", "διάβασε", "Διαβασε", "ΔΙΑΒΑΣΕ", "diabase", "di;abase", "Diabase", "Di;abase", "DIABASE", "diavase", "DIAVASE"], correct: "Διάβασε" },
+    { variations: ["αντιμεταθεσε", "αντιμετάθεσε", "Αντιμεταθεσε", "ΑΝΤΙΜΕΤΑΘΕΣΕ", "antimetauese", "antimet;auese", "Antimetauese", "Antimet;auese", "ANTIMETAUESE", "antimetathese", "ANTIMETATHESE"], correct: "Αντιμετάθεσε" },
+    { variations: ["αν", "ΑΝ", "an", "An", "AN"], correct: "Αν" },
+    { variations: ["τοτε", "Τοτε", "Τότε", "ΤΟΤΕ", "tote", "t;ote", "Tote", "T;ote", "TOTE"], correct: "τότε" },
+    { variations: ["αλλιως_αν", "Αλλιως_αν", "Αλλιώς_αν", "ΑΛΛΙΩς_ΑΝ", "allivw_an", "alli;vw_an", "Allivw_an", "Alli;vw_an", "ALLIVW_AN", "alliws_an", "ALLIWS_AN", "αλλιωσ_αν", "αλλιώσ_αν", "Αλλιωσ_αν", "Αλλιώσ_αν", "ΑΛΛΙΩΣ_ΑΝ", "allivs_an", "alli;vs_an", "Allivs_an", "Alli;vs_an", "ALLIVS_AN"], correct: "αλλιώς_αν" },
+    { variations: ["αλλιως", "Αλλιως", "Αλλιώς", "ΑΛΛΙΩς", "allivw", "alli;vw", "Allivw", "Alli;vw", "ALLIVW", "alliws", "ALLIWS", "αλλιωσ", "Αλλιωσ", "Αλλιώσ", "ΑΛΛΙΩΣ", "allivs", "alli;vs", "Allivs", "Alli;vs", "ALLIVS"], correct: "αλλιώς" },
+    { variations: ["τελος_αν", "Τελος_αν", "ΤΕΛΟς_ΑΝ", "telow_an", "t;elow_an", "Telow_an", "T;elow_an", "TELOW_AN", "telos_an", "TELOS_AN", "τελοσ_αν", "Τελοσ_αν", "Τέλοσ_αν", "ΤΕΛΟΣ_ΑΝ", "t;elos_an", "Telos_an", "T;elos_an"], correct: "Τέλος_αν" },
+    { variations: ["για", "ΓΙΑ", "gia", "Gia", "GIA"], correct: "Για" },
+    { variations: ["απο", "Απο", "Από", "ΑΠΟ", "apo", "ap;o", "Apo", "Ap;o", "APO"], correct: "από" },
+    { variations: ["μεχρι", "Μεχρι", "Μέχρι", "ΜΕΧΡΙ", "mexri", "m;exri", "Mexri", "M;exri", "MEXRI"], correct: "μέχρι" },
+    { variations: ["με_βημα", "Με_βημα", "Με_βήμα", "ΜΕ_ΒΗΜΑ", "me_bhma", "me_b;hma", "Me_bhma", "Me_b;hma", "ME_BHMA", "me_vhma", "ME_VHMA"], correct: "με_βήμα" },
+    { variations: ["οσο", "όσο", "Οσο", "Όσο", "ΟΣΟ", "oso", ";oso", "Oso", ";Oso", "OSO"], correct: "Όσο" },
+    { variations: ["επαναλαβε", "Επαναλαβε", "Επανάλαβε", "ΕΠΑΝΑΛΑΒΕ", "epanalabe", "epan;alabe", "Epanalabe", "Epan;alabe", "EPANALABE", "epanalave", "EPANALAVE"], correct: "επανάλαβε" },
+    { variations: ["τελος_επαναληψης", "τέλος_επανάληψης", "Τελος_επαναληψης", "ΤΕΛΟς_ΕΠΑΝΑΛΗΨΗς", "telow_epanalhchw", "t;elow_epan;alhchw", "Telow_epanalhchw", "T;elow_epan;alhchw", "TELOW_EPANALHCHW", "telos_epanalhpshs", "TELOS_EPANALHPSHS", "τελοσ_επαναληψησ", "τέλοσ_επανάληψησ", "Τελοσ_επαναληψησ", "ΤΕΛΟΣ_ΕΠΑΝΑΛΗΨΗΣ", "telos_epanalhchs", "t;elos_epan;alhchs", "Telos_epanalhchs", "T;elos_epan;alhchs", "TELOS_EPANALHCHS"], correct: "Τέλος_επανάληψης" },
+    { variations: ["αρχη_επαναληψης", "αρχή_επανάληψης", "Αρχη_επαναληψης", "ΑΡΧΗ_ΕΠΑΝΑΛΗΨΗς", "arxh_epanalhchw", "arx;h_epan;alhchw", "Arxh_epanalhchw", "Arx;h_epan;alhchw", "ARXH_EPANALHCHW", "arxh_epanalhpshs", "ARXH_EPANALHPSHS", "αρχη_επαναληψησ", "αρχή_επανάληψησ", "Αρχη_επαναληψησ", "ΑΡΧΗ_ΕΠΑΝΑΛΗΨΗΣ", "arxh_epanalhchs", "arx;h_epan;alhchs", "Arxh_epanalhchs", "Arx;h_epan;alhchs", "ARXH_EPANALHCHS"], correct: "Αρχή_επανάληψης" },
+    { variations: ["μεχρις_οτου", "μέχρις_ότου", "Μεχρις_οτου", "ΜΕΧΡΙς_ΟΤΟΥ", "mexriw_otoy", "m;exriw_;otoy", "Mexriw_otoy", "M;exriw_;otoy", "MEXRIW_OTOY", "mexris_otoy", "MEXRIS_OTOY"], correct: "Μέχρις_ότου" },
+    { variations: ["αποτελεσματα", "αποτελέσματα", "Αποτελεσματα", "ΑΠΟΤΕΛΕΣΜΑΤΑ", "apotelesmata", "apotel;esmata", "Apotelesmata", "Apotel;esmata", "APOTELESMATA"], correct: "Αποτελέσματα" },
+    { variations: ["τελος", "τέλος", "Τελος", "ΤΕΛΟς", "telow", "t;elow", "Telow", "T;elow", "TELOW", "telos", "TELOS", "τελοσ", "τέλοσ", "Τελοσ", "ΤΕΛΟΣ", "t;elos", "Telos", "T;elos"], correct: "Τέλος" },
+
+];
+
+// Loop through the corrections array and populate algorithmCorrections
+AlgCorrections.forEach(item => {
+    item.variations.forEach(variation => {
+        algorithmCorrections[variation] = item.correct;
+    });
+});
+
+const ProgCorrections = [
+    { variations: ["εκτύπωσε", "εκτυπωσε", "Εκτυπωσε"], correct: "Εκτύπωσε program" },
+    { variations: ["αλγοριθμος"], correct: "Αλγόριθμος program" }
+    // Add more corrections here as needed
+];
+
+// Loop through the corrections array and populate algorithmCorrections
+ProgCorrections.forEach(item => {
+    item.variations.forEach(variation => {
+        programCorrections[variation] = item.correct;
+    });
+});
+
+//end of mapping 
 
 // Update commands based on selection
 function updateCommands() {
@@ -53,7 +91,7 @@ function updateCommands() {
     // Add commands to the list
     commands.forEach(command => {
         const li = document.createElement('li');
-        
+
         // Split command into words
         const words = command.split(' ');
 
@@ -145,7 +183,7 @@ function autoCorrect() {
     const textarea = document.getElementById('code');
     const cursorPosition = textarea.selectionStart; // Get current cursor position
     const textBeforeCursor = textarea.value.substring(0, cursorPosition);
-    
+
     // Check which line the cursor is on
     const lines = textBeforeCursor.split('\n');
     const currentLine = lines[lines.length - 1]; // Get the current line
@@ -160,9 +198,9 @@ function autoCorrect() {
     const correctWord = corrections[lastWord];
     if (correctWord) {
         // Replace last word with the correct version
-        const correctedText = textarea.value.substring(0, cursorPosition - currentLine.length + lastWordStart) + 
-                              correctWord + 
-                              textarea.value.substring(cursorPosition);
+        const correctedText = textarea.value.substring(0, cursorPosition - currentLine.length + lastWordStart) +
+            correctWord +
+            textarea.value.substring(cursorPosition);
         textarea.value = correctedText;
 
         // Restore cursor position
