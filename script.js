@@ -178,33 +178,70 @@ function syncHighlight() {
     // You could add additional synchronization here if needed
 }
 
-// Auto-correct feature
+// Handle Tab key press to insert spaces
+document.getElementById('code').addEventListener('keydown', function (e) {
+    if (e.key === 'Tab') {
+        e.preventDefault(); // Prevent the default tab behavior
+
+        const textarea = this;
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+
+        // Define how many spaces you want to insert (e.g., 4 spaces)
+        const tabSpaces = '    ';
+
+        // Insert spaces at the cursor position
+        const textBefore = textarea.value.substring(0, start);
+        const textAfter = textarea.value.substring(end);
+        textarea.value = textBefore + tabSpaces + textAfter;
+
+        // Move the cursor after the inserted spaces
+        textarea.selectionStart = textarea.selectionEnd = start + tabSpaces.length;
+
+        // Optional: Update line numbers or any other functions
+        updateLineNumbers();
+        syncHighlight();
+    }
+});
+
+// Auto-correct feature - applies correction after finishing a word
 function autoCorrect() {
     const textarea = document.getElementById('code');
     const cursorPosition = textarea.selectionStart; // Get current cursor position
     const textBeforeCursor = textarea.value.substring(0, cursorPosition);
 
-    // Check which line the cursor is on
-    const lines = textBeforeCursor.split('\n');
-    const currentLine = lines[lines.length - 1]; // Get the current line
-    const lastWordStart = currentLine.lastIndexOf(' ') + 1; // Get the start of the last word
-    const lastWord = currentLine.substring(lastWordStart).toLowerCase(); // Convert to lowercase for matching
+    // Check the last character entered
+    const lastChar = textBeforeCursor.charAt(textBeforeCursor.length - 1);
 
-    // Determine the corrections to use based on the selected type
-    const typeSelect = document.getElementById('typeSelect').value;
-    const corrections = (typeSelect === 'program') ? programCorrections : algorithmCorrections;
+    // If the last character is a space, punctuation, or newline, apply autocorrect
+    const isWordSeparator = [' ', '.', ',', ';', '\n'].includes(lastChar);
 
-    // Check for corrections
-    const correctWord = corrections[lastWord];
-    if (correctWord) {
-        // Replace last word with the correct version
-        const correctedText = textarea.value.substring(0, cursorPosition - currentLine.length + lastWordStart) +
-            correctWord +
-            textarea.value.substring(cursorPosition);
-        textarea.value = correctedText;
+    if (isWordSeparator) {
+        const words = textBeforeCursor.split(/[\s.,;]+/); // Split by spaces, punctuation, etc.
+        const lastWord = words[words.length - 2]; // Get the second to last element (because the last will be an empty string)
+        
+        if (!lastWord) return; // If there's no word to correct, return early
 
-        // Restore cursor position
-        textarea.selectionStart = textarea.selectionEnd = cursorPosition - currentLine.length + lastWordStart + correctWord.length; // Move cursor to the end of the corrected word
+        const lowerCaseWord = lastWord.toLowerCase(); // Convert to lowercase for matching
+
+        // Determine the corrections to use based on the selected type
+        const typeSelect = document.getElementById('typeSelect').value;
+        const corrections = (typeSelect === 'program') ? programCorrections : algorithmCorrections;
+
+        // Check for corrections
+        const correctWord = corrections[lowerCaseWord];
+        if (correctWord) {
+            // Replace last word with the correct version
+            const correctedText = textarea.value.substring(0, cursorPosition - lastWord.length - 1) +
+                correctWord +
+                lastChar + // Keep the separator (space or punctuation)
+                textarea.value.substring(cursorPosition);
+
+            textarea.value = correctedText;
+
+            // Restore cursor position
+            textarea.selectionStart = textarea.selectionEnd = cursorPosition - lastWord.length + correctWord.length; // Move cursor to the end of the corrected word
+        }
     }
 }
 
