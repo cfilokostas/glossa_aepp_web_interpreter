@@ -219,6 +219,10 @@ document.getElementById('code').addEventListener('keydown', function (e) {
         e.preventDefault(); // Prevent the default tab behavior
 
         const textarea = this;
+
+        // Force autocorrect, even if there's no separator yet
+        autoCorrect(true); // Pass true to force autocorrect for the current word
+
         const start = textarea.selectionStart;
         const end = textarea.selectionEnd;
 
@@ -239,8 +243,8 @@ document.getElementById('code').addEventListener('keydown', function (e) {
     }
 });
 
-// Auto-correct feature - applies correction after finishing a word
-function autoCorrect() {
+// Auto-correct feature - applies correction after finishing a word or forced correction
+function autoCorrect(force = false) {
     const textarea = document.getElementById('code');
     const cursorPosition = textarea.selectionStart; // Get current cursor position
     const textBeforeCursor = textarea.value.substring(0, cursorPosition);
@@ -248,13 +252,14 @@ function autoCorrect() {
     // Check the last character entered
     const lastChar = textBeforeCursor.charAt(textBeforeCursor.length - 1);
 
-    // If the last character is a space, punctuation, or newline, apply autocorrect
-    const isWordSeparator = [' ', '.', ',', ';', '\n'].includes(lastChar);
+    // Check if the last character is a word separator, or if we are forcing autocorrect
+    const isWordSeparator = [' ', '.', ',', ';', '\n'].includes(lastChar) || force;
 
     if (isWordSeparator) {
+        // If 'force' is true (Tab key), correct the current word. Otherwise, correct the word before the separator.
         const words = textBeforeCursor.split(/[\s.,;]+/); // Split by spaces, punctuation, etc.
-        const lastWord = words[words.length - 2]; // Get the second to last element (because the last will be an empty string)
-        
+        const lastWord = force ? words[words.length - 1] : words[words.length - 2]; // Get the correct last word for Tab or space
+
         if (!lastWord) return; // If there's no word to correct, return early
 
         const lowerCaseWord = lastWord.toLowerCase(); // Convert to lowercase for matching
@@ -266,21 +271,26 @@ function autoCorrect() {
         // Check for corrections
         const correctWord = corrections[lowerCaseWord];
         if (correctWord) {
-            // Replace last word with the correct version
-            const correctedText = textarea.value.substring(0, cursorPosition - lastWord.length - 1) +
+            // Find the start index of the last word
+            const wordStartIndex = force 
+                ? cursorPosition - lastWord.length // For Tab, the last word is immediately before the cursor
+                : textBeforeCursor.lastIndexOf(lastWord); // For other separators, find the last occurrence of the word
+
+            // Replace the last word with the correct version
+            const correctedText = textarea.value.substring(0, wordStartIndex) +
                 correctWord +
-                lastChar + // Keep the separator (space or punctuation)
-                textarea.value.substring(cursorPosition);
+                (force ? '' : lastChar) + // Keep the separator (space or punctuation) unless forced (e.g., Tab)
+                textarea.value.substring(cursorPosition); // Keep the rest of the text unchanged
 
             textarea.value = correctedText;
 
-            // Restore cursor position
-            textarea.selectionStart = textarea.selectionEnd = cursorPosition - lastWord.length + correctWord.length; // Move cursor to the end of the corrected word
+            // Restore cursor position after correction
+            textarea.selectionStart = textarea.selectionEnd = wordStartIndex + correctWord.length + (force ? 0 : 1); // Adjust for the separator if not forced
         }
     }
 }
 
-// Listen for input changes
+// Listen for input changes to handle regular typing (space, newline, punctuation)
 document.getElementById('code').addEventListener('input', () => {
     autoCorrect();
 });
