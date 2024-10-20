@@ -63,44 +63,44 @@ AlgCorrections.forEach(item => {
 });
 
 const ProgCorrections = [
-    {variations: ["προγραμμα", "πρόγραμμα", "programma", "PROGRAMMA", "programma", "PROGRAMMA"], correct: "ΠΡΟΓΡΑΜΜΑ" },
-    {variations: ["σταθερες", "σταθερές", "stauerew", "STAUEREW", "statheres", "STATHERES", "σταθερεσ", "staueres", "STAUERES"], correct: "ΣΤΑΘΕΡΕΣ" },
-    {variations: ["μεταβλητες", "μεταβλητές", "metablhtew", "METABLHTEW", "metablhtes", "METABLHTES", "μεταβλητεσ", "metablhtes", "METABLHTES"], correct: "ΜΕΤΑΒΛΗΤΕΣ" },
-    {variations: ["ακεραιες", "ακέραιες", "ακεραιες:", "ΑΚΕΡΑΙΕΣ", "akeraiew", "AKERAIEW", "akeraies", "AKERAIES", "ακεραιεσ:", "akeraies", "AKERAIES"], correct: "ΑΚΕΡΑΙΕΣ:" },
-    {variations: ["πραγματικες", "πραγματικές", "πραγματικες:", "ΠΡΑΓΜΑΤΙΚΕΣ", "pragmatikew", "PRAGMATIKEW", "pragmatikes", "PRAGMATIKES", "πραγματικεσ:", "pragmatikes", "PRAGMATIKES"], correct: "ΠΡΑΓΜΑΤΙΚΕΣ:" },
-    {variations: ["χαρακτηρες", "χαρακτήρες", "χαρακτηρες:", "ΧΑΡΑΚΤΗΡΕΣ", "xarakthrew", "XARAKTHREW", "xarakthres", "XARAKTHRES", "χαρακτηρεσ:", "xarakthres", "XARAKTHRES"], correct: "ΧΑΡΑΚΤΗΡΕΣ:" },
-    {variations: ["λογικες", "λογικές", "λογικες:", "ΛΟΓΙΚΕΣ", "logikew", "LOGIKEW", "logikes", "LOGIKES", "logikes", "LOGIKES"], correct: "ΛΟΓΙΚΕΣ:" },
-    {variations: ["αρχη", "αρχή", "arxh", "ARXH", "arxh", "ARXH"], correct: "ΑΡΧΗ" },
-    {variations: ["γραψε", "γράψε", "grace", "GRACE", "grapse", "GRAPSE"], correct: "ΓΡΑΨΕ" },
-    {variations: ["διαβασε", "διάβασε", "diabase", "DIABASE", "diabase", "DIABASE"], correct: "ΔΙΑΒΑΣΕ" },
-    {variations: ["αν", "an", "AN", "an", "AN"], correct: "ΑΝ" },
-    {variations: ["τοτε", "τότε", "tote", "TOTE", "tote", "TOTE"], correct: "ΤΟΤΕ" },
-    {variations: ["αλλιως_αν", "αλλιώς_αν", "allivw_an", "ALLIVW_AN", "alliws_an", "ALLIWS_AN", "αλλιωσ_αν", "allivs_an", "ALLIVS_AN"], correct: "ΑΛΛΙΩΣ_ΑΝ" },
-    {variations: ["αλλιως", "αλλιώς", "allivw", "ALLIVW", "alliws", "ALLIWS", "αλλιωσ", "allivs", "ALLIVS"], correct: "ΑΛΛΙΩΣ" },
-    {variations: ["τελος_αν", "τέλος_αν", "telow_an", "TELOW_AN", "telos_an", "TELOS_AN", "τελοσ_αν", "telos_an", "TELOS_AN"], correct: "ΤΕΛΟΣ_ΑΝ" },
-    {variations: ["για", "gia", "GIA", "gia", "GIA"], correct: "ΓΙΑ" },
-    {variations: ["απο", "apo", "APO", "apo", "APO"], correct: "ΑΠΟ" },
-    {variations: ["μεχρι", "μέχρι", "mexri", "MEXRI", "mexri", "MEXRI"], correct: "ΜΕΧΡΙ" },
-    {variations: ["με_βημα", "με_βήμα", "me_bhma", "ME_BHMA", "me_bhma", "ME_BHMA"], correct: "ΜΕ_ΒΗΜΑ" },
-    {variations: ["αρχη_επαναληψης", "αρχή_επανάληψης", "arxh_epanalhchw", "ARXH_EPANALHCHW", "arxh_epanalhpshs", "ARXH_EPANALHPSHS", "αρχη_επαναληψησ", "arxh_epanalhchs", "ARXH_EPANALHCHS"], correct: "ΑΡΧΗ_ΕΠΑΝΑΛΗΨΗΣ" },
-    {variations: ["οσο", "όσο", "oso", "OSO", "oso", "OSO"], correct: "ΟΣΟ" },
-    {variations: ["επαναλαβε", "επανάλαβε", "epanalabe", "EPANALABE", "epanalabe", "EPANALABE"], correct: "ΕΠΑΝΑΛΑΒΕ" },
-    {variations: ["τελος_επαναληψης", "τέλος_επανάληψης", "telow_epanalhchw", "TELOW_EPANALHCHW", "telos_epanalhpshs", "TELOS_EPANALHPSHS", "τελοσ_επαναληψησ", "telos_epanalhchs", "TELOS_EPANALHCHS"], correct: "ΤΕΛΟΣ_ΕΠΑΝΑΛΗΨΗΣ" },
-    {variations: ["μεχρις_οτου", "μέχρις_ότου", "mexriw_otoy", "MEXRIW_OTOY", "mexris_otoy", "MEXRIS_OTOY", "μεχρισ_οτου", "mexris_otoy", "MEXRIS_OTOY"], correct: "ΜΕΧΡΙΣ_ΟΤΟΥ" },
-    {variations: ["καλεσε", "κάλεσε", "kalewe", "KALEWE", "kalese", "KALESE"], correct: "ΚΑΛΕΣΕ" },
-    {variations: ["τελος_προγραμματος", "τέλος_προγράμματος", "telow_programmatow", "TELOW_PROGRAMMATOW", "telos_programmatos", "TELOS_PROGRAMMATOS", "τελοσ_προγραμματοσ", "telos_programmatos", "TELOS_PROGRAMMATOS"], correct: "ΤΕΛΟΣ_ΠΡΟΓΡΑΜΜΑΤΟΣ" },
-    {variations: ["διαδικασια", "διαδικασία", "diadikasia", "DIADIKASIA", "diadikasia", "DIADIKASIA"], correct: "ΔΙΑΔΙΚΑΣΙΑ" },
-    {variations: ["τελος_διαδικασιας", "τέλος_διαδικασίας", "telow_diadikasiaw", "TELOW_DIADIKASIAW", "telos_diadikasias", "TELOS_DIADIKASIAS", "τελοσ_διαδικασιασ", "telos_diadikasias", "TELOS_DIADIKASIAS"], correct: "ΤΕΛΟΣ_ΔΙΑΔΙΚΑΣΙΑΣ" },
-    {variations: ["συναρτηση", "συνάρτηση", "synarthsh", "SYNARTHSH", "synarthsh", "SYNARTHSH"], correct: "ΣΥΝΑΡΤΗΣΗ" },
-    {variations: ["ακεραια", "ακέραια", ":ακεραια", "ΑΚΕΡΑΙΑ", "akeraia", "AKERAIA", "akeraia", "AKERAIA"], correct: ":ΑΚΕΡΑΙΑ" },
-    {variations: ["πραγματικη", "πραγματική", ":πραγματικη", "ΠΡΑΓΜΑΤΙΚΗ", "pragmatikh", "PRAGMATIKH", "pragmatikh", "PRAGMATIKH"], correct: ":ΠΡΑΓΜΑΤΙΚΗ" },
-    {variations: ["χαρακτηρας", "χαρακτήρας", ":χαρακτηρας", "ΧΑΡΑΚΤΗΡΑΣ", "xarakthraw", "XARAKTHRAW", "xarakthras", "XARAKTHRAS", ":χαρακτηρασ", "xarakthras", "XARAKTHRAS"], correct: ":ΧΑΡΑΚΤΗΡΑΣ" },
-    {variations: ["λογικη", "λογική", ":λογικη", "ΛΟΓΙΚΗ", "logikh", "LOGIKH", "logikh", "LOGIKH"], correct: ":ΛΟΓΙΚΗ" },
-    {variations: ["τελος_συναρτησης", "τέλος_συνάρτησης", "telow_synarthshw", "TELOW_SYNARTHSHW", "telos_synarthshs", "TELOS_SYNARTHSHS", "τελοσ_συναρτησησ", "telos_synarthshs", "TELOS_SYNARTHSHS"], correct: "ΤΕΛΟΣ_ΣΥΝΑΡΤΗΣΗΣ" },
-    {variations: ["η", "h", "H", "h", "H"], correct: "Η" },
-    {variations: ["και", "kai", "KAI", "kai", "KAI"], correct: "ΚΑΙ" },
-    {variations: ["οχι", "όχι", "oxi", ";oxi", "OXI", "oxi", "OXI"], correct: "ΌΧΙ" },
-    
+    { variations: ["προγραμμα", "πρόγραμμα", "programma", "PROGRAMMA", "programma", "PROGRAMMA"], correct: "ΠΡΟΓΡΑΜΜΑ" },
+    { variations: ["σταθερες", "σταθερές", "stauerew", "STAUEREW", "statheres", "STATHERES", "σταθερεσ", "staueres", "STAUERES"], correct: "ΣΤΑΘΕΡΕΣ" },
+    { variations: ["μεταβλητες", "μεταβλητές", "metablhtew", "METABLHTEW", "metablhtes", "METABLHTES", "μεταβλητεσ", "metablhtes", "METABLHTES"], correct: "ΜΕΤΑΒΛΗΤΕΣ" },
+    { variations: ["ακεραιες", "ακέραιες", "ακεραιες:", "ΑΚΕΡΑΙΕΣ", "akeraiew", "AKERAIEW", "akeraies", "AKERAIES", "ακεραιεσ:", "akeraies", "AKERAIES"], correct: "ΑΚΕΡΑΙΕΣ:" },
+    { variations: ["πραγματικες", "πραγματικές", "πραγματικες:", "ΠΡΑΓΜΑΤΙΚΕΣ", "pragmatikew", "PRAGMATIKEW", "pragmatikes", "PRAGMATIKES", "πραγματικεσ:", "pragmatikes", "PRAGMATIKES"], correct: "ΠΡΑΓΜΑΤΙΚΕΣ:" },
+    { variations: ["χαρακτηρες", "χαρακτήρες", "χαρακτηρες:", "ΧΑΡΑΚΤΗΡΕΣ", "xarakthrew", "XARAKTHREW", "xarakthres", "XARAKTHRES", "χαρακτηρεσ:", "xarakthres", "XARAKTHRES"], correct: "ΧΑΡΑΚΤΗΡΕΣ:" },
+    { variations: ["λογικες", "λογικές", "λογικες:", "ΛΟΓΙΚΕΣ", "logikew", "LOGIKEW", "logikes", "LOGIKES", "logikes", "LOGIKES"], correct: "ΛΟΓΙΚΕΣ:" },
+    { variations: ["αρχη", "αρχή", "arxh", "ARXH", "arxh", "ARXH"], correct: "ΑΡΧΗ" },
+    { variations: ["γραψε", "γράψε", "grace", "GRACE", "grapse", "GRAPSE"], correct: "ΓΡΑΨΕ" },
+    { variations: ["διαβασε", "διάβασε", "diabase", "DIABASE", "diabase", "DIABASE"], correct: "ΔΙΑΒΑΣΕ" },
+    { variations: ["αν", "an", "AN", "an", "AN"], correct: "ΑΝ" },
+    { variations: ["τοτε", "τότε", "tote", "TOTE", "tote", "TOTE"], correct: "ΤΟΤΕ" },
+    { variations: ["αλλιως_αν", "αλλιώς_αν", "allivw_an", "ALLIVW_AN", "alliws_an", "ALLIWS_AN", "αλλιωσ_αν", "allivs_an", "ALLIVS_AN"], correct: "ΑΛΛΙΩΣ_ΑΝ" },
+    { variations: ["αλλιως", "αλλιώς", "allivw", "ALLIVW", "alliws", "ALLIWS", "αλλιωσ", "allivs", "ALLIVS"], correct: "ΑΛΛΙΩΣ" },
+    { variations: ["τελος_αν", "τέλος_αν", "telow_an", "TELOW_AN", "telos_an", "TELOS_AN", "τελοσ_αν", "telos_an", "TELOS_AN"], correct: "ΤΕΛΟΣ_ΑΝ" },
+    { variations: ["για", "gia", "GIA", "gia", "GIA"], correct: "ΓΙΑ" },
+    { variations: ["απο", "apo", "APO", "apo", "APO"], correct: "ΑΠΟ" },
+    { variations: ["μεχρι", "μέχρι", "mexri", "MEXRI", "mexri", "MEXRI"], correct: "ΜΕΧΡΙ" },
+    { variations: ["με_βημα", "με_βήμα", "me_bhma", "ME_BHMA", "me_bhma", "ME_BHMA"], correct: "ΜΕ_ΒΗΜΑ" },
+    { variations: ["αρχη_επαναληψης", "αρχή_επανάληψης", "arxh_epanalhchw", "ARXH_EPANALHCHW", "arxh_epanalhpshs", "ARXH_EPANALHPSHS", "αρχη_επαναληψησ", "arxh_epanalhchs", "ARXH_EPANALHCHS"], correct: "ΑΡΧΗ_ΕΠΑΝΑΛΗΨΗΣ" },
+    { variations: ["οσο", "όσο", "oso", "OSO", "oso", "OSO"], correct: "ΟΣΟ" },
+    { variations: ["επαναλαβε", "επανάλαβε", "epanalabe", "EPANALABE", "epanalabe", "EPANALABE"], correct: "ΕΠΑΝΑΛΑΒΕ" },
+    { variations: ["τελος_επαναληψης", "τέλος_επανάληψης", "telow_epanalhchw", "TELOW_EPANALHCHW", "telos_epanalhpshs", "TELOS_EPANALHPSHS", "τελοσ_επαναληψησ", "telos_epanalhchs", "TELOS_EPANALHCHS"], correct: "ΤΕΛΟΣ_ΕΠΑΝΑΛΗΨΗΣ" },
+    { variations: ["μεχρις_οτου", "μέχρις_ότου", "mexriw_otoy", "MEXRIW_OTOY", "mexris_otoy", "MEXRIS_OTOY", "μεχρισ_οτου", "mexris_otoy", "MEXRIS_OTOY"], correct: "ΜΕΧΡΙΣ_ΟΤΟΥ" },
+    { variations: ["καλεσε", "κάλεσε", "kalewe", "KALEWE", "kalese", "KALESE"], correct: "ΚΑΛΕΣΕ" },
+    { variations: ["τελος_προγραμματος", "τέλος_προγράμματος", "telow_programmatow", "TELOW_PROGRAMMATOW", "telos_programmatos", "TELOS_PROGRAMMATOS", "τελοσ_προγραμματοσ", "telos_programmatos", "TELOS_PROGRAMMATOS"], correct: "ΤΕΛΟΣ_ΠΡΟΓΡΑΜΜΑΤΟΣ" },
+    { variations: ["διαδικασια", "διαδικασία", "diadikasia", "DIADIKASIA", "diadikasia", "DIADIKASIA"], correct: "ΔΙΑΔΙΚΑΣΙΑ" },
+    { variations: ["τελος_διαδικασιας", "τέλος_διαδικασίας", "telow_diadikasiaw", "TELOW_DIADIKASIAW", "telos_diadikasias", "TELOS_DIADIKASIAS", "τελοσ_διαδικασιασ", "telos_diadikasias", "TELOS_DIADIKASIAS"], correct: "ΤΕΛΟΣ_ΔΙΑΔΙΚΑΣΙΑΣ" },
+    { variations: ["συναρτηση", "συνάρτηση", "synarthsh", "SYNARTHSH", "synarthsh", "SYNARTHSH"], correct: "ΣΥΝΑΡΤΗΣΗ" },
+    { variations: ["ακεραια", "ακέραια", ":ακεραια", "ΑΚΕΡΑΙΑ", "akeraia", "AKERAIA", "akeraia", "AKERAIA"], correct: ":ΑΚΕΡΑΙΑ" },
+    { variations: ["πραγματικη", "πραγματική", ":πραγματικη", "ΠΡΑΓΜΑΤΙΚΗ", "pragmatikh", "PRAGMATIKH", "pragmatikh", "PRAGMATIKH"], correct: ":ΠΡΑΓΜΑΤΙΚΗ" },
+    { variations: ["χαρακτηρας", "χαρακτήρας", ":χαρακτηρας", "ΧΑΡΑΚΤΗΡΑΣ", "xarakthraw", "XARAKTHRAW", "xarakthras", "XARAKTHRAS", ":χαρακτηρασ", "xarakthras", "XARAKTHRAS"], correct: ":ΧΑΡΑΚΤΗΡΑΣ" },
+    { variations: ["λογικη", "λογική", ":λογικη", "ΛΟΓΙΚΗ", "logikh", "LOGIKH", "logikh", "LOGIKH"], correct: ":ΛΟΓΙΚΗ" },
+    { variations: ["τελος_συναρτησης", "τέλος_συνάρτησης", "telow_synarthshw", "TELOW_SYNARTHSHW", "telos_synarthshs", "TELOS_SYNARTHSHS", "τελοσ_συναρτησησ", "telos_synarthshs", "TELOS_SYNARTHSHS"], correct: "ΤΕΛΟΣ_ΣΥΝΑΡΤΗΣΗΣ" },
+    { variations: ["η", "h", "H", "h", "H"], correct: "Η" },
+    { variations: ["και", "kai", "KAI", "kai", "KAI"], correct: "ΚΑΙ" },
+    { variations: ["οχι", "όχι", "oxi", ";oxi", "OXI", "oxi", "OXI"], correct: "ΌΧΙ" },
+
 ];
 
 // Loop through the corrections array and populate ProgramCorrections
@@ -272,7 +272,7 @@ function autoCorrect(force = false) {
         const correctWord = corrections[lowerCaseWord];
         if (correctWord) {
             // Find the start index of the last word
-            const wordStartIndex = force 
+            const wordStartIndex = force
                 ? cursorPosition - lastWord.length // For Tab, the last word is immediately before the cursor
                 : textBeforeCursor.lastIndexOf(lastWord); // For other separators, find the last occurrence of the word
 
@@ -294,6 +294,20 @@ function autoCorrect(force = false) {
 document.getElementById('code').addEventListener('input', () => {
     autoCorrect();
 });
+
+//play button is pressed
+function runCode() {
+    const codeTextarea = document.getElementById('code'); // Get the textarea element
+    const code = codeTextarea.value; // Get the code from the textarea
+    const outputArea = document.getElementById('output');
+
+    // Display the code in the output area
+    outputArea.value = `Εκτέλεση:\n${code}`;
+
+    // Here you can add your logic to interpret or execute the code
+    // This could involve sending it to a server or interpreting it directly in the browser
+}
+
 
 // Initialize commands on page load
 window.onload = updateCommands;

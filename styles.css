@@ -74,7 +74,7 @@ textarea:focus {
     /* Light gray background */
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     /* Space out elements in the tab */
     border-bottom: 1px solid #ccc;
     /* Border separating tabs from content */
@@ -116,6 +116,40 @@ textarea:focus {
     /* Space between list items */
     font-family: monospace;
     /* Monospace font for code-like appearance */
+}
+
+/* Play Button styles */
+#playButton {
+    background-color: #4CAF50;
+    /* Green background */
+    border: none;
+    /* No border */
+    padding: 10px;
+    /* Padding for the button */
+    margin-left: 10px;
+    /* Space between dropdown and button */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    border-radius: 5px;
+    /* Rounded corners */
+    outline: none;
+    /* Remove outline */
+}
+
+/* Add hover effect */
+#playButton:hover {
+    background-color: #45a049;
+    /* Darker green on hover */
+}
+
+/* Style the SVG */
+#playButton svg {
+    fill: white;
+    /* Color of the play icon */
+    width: 20px;
+    /* Size of the play icon */
+    height: 20px;
+    /* Size of the play icon */
 }
 
 /* Code area containing both line numbers and textarea */

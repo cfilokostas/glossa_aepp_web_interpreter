@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="el">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Περιβάλλον Διερμηνευτή</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="main-container">
         <div class="code-output-container">
@@ -15,6 +17,11 @@
                     <option value="algorithm">Αλγόριθμος</option>
                     <option value="program">Πρόγραμμα</option>
                 </select>
+                <button id="playButton" onclick="runCode()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <polygon points="5,3 19,12 5,21 5,3" fill="white" />
+                    </svg>
+                </button>
             </div>
 
             <!-- Περιοχή του editor -->
@@ -22,7 +29,9 @@
                 <div class="code-area">
                     <div class="line-numbers" id="lineNumbers"></div>
                     <div id="highlight"></div>
-                    <textarea id="code" spellcheck="false" oninput="syncHighlight(); updateLineNumbers()" onscroll="syncScroll()" onclick="highlightLine(event)" onkeydown="highlightLine(event)" onkeyup="highlightLine(event)"></textarea>
+                    <textarea id="code" spellcheck="false" oninput="syncHighlight(); updateLineNumbers()"
+                        onscroll="syncScroll()" onclick="highlightLine(event)" onkeydown="highlightLine(event)"
+                        onkeyup="highlightLine(event)"></textarea>
                 </div>
             </div>
 
@@ -45,4 +54,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
